@@ -5,12 +5,11 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   
-  // CORS - permite tu frontend de Vercel
+  // CORS - Configuración actualizada para GitHub Pages
   app.enableCors({
     origin: [
-      'http://localhost:5173',
-      'https://formula-frontend-rogj0qmox-kevinmagas-projects.vercel.app/', // Cambia por tu URL real
-      /\.vercel\.app$/, // Permite cualquier subdominio de vercel.app
+      'http://localhost:5173', // Para cuando pruebas en tu compu
+      'https://kevinmaga.github.io', // 👈 TU NUEVA URL DE GITHUB PAGES
     ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
@@ -27,7 +26,7 @@ async function bootstrap() {
   );
   
   const port = process.env.PORT || 3000;
-  await app.listen(port, '0.0.0.0'); // Importante: escuchar en 0.0.0.0
+  await app.listen(port, '0.0.0.0');
   console.log(`🚀 Backend corriendo en puerto ${port}`);
 }
 bootstrap();
